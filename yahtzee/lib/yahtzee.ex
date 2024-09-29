@@ -8,6 +8,6 @@ defmodule Yahtzee do
     %{:"Three of a kind" => head + (score_lower(tail)[:"Three of a kind"])}
   end
 
-  # aloha mora
+  # aloha mora sulaiman
 
 end
