@@ -6,5 +6,24 @@ defmodule YahtzeeTest do
     assert %{"Three of a kind": 17} = Yahtzee.score_lower([2, 3, 4, 4, 4])
   end
 
+  test "Identify 'Three of a kind' with exact threes" do
+    assert %{"Three of a kind": 9} = Yahtzee.score_lower([3, 3, 3])
+  end
+
+  test "Identify 'Three of a kind' with exact fours" do
+    assert %{"Three of a kind": 16} = Yahtzee.score_lower([4, 4, 4, 4])
+  end
+
+  test "Identify 'Three of a kind' with exact fives" do
+    assert %{"Three of a kind": 25} = Yahtzee.score_lower([5, 5, 5, 5, 5])
+  end
+
+  test "Identify 'Three of a kind' with empty list" do
+    assert %{"Three of a kind": 0} = Yahtzee.score_lower([])
+  end
+
+  test "Identify 'Three of a kind' with non-consecutive numbers" do
+    assert %{"Three of a kind": 17} = Yahtzee.score_lower([4, 2, 4, 3, 4])
+  end
 
 end
