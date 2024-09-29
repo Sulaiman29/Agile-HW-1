@@ -26,4 +26,8 @@ defmodule YahtzeeTest do
     assert %{"Three of a kind": 17} = Yahtzee.score_lower([4, 2, 4, 3, 4])
   end
 
+  test "Identify 'Three of a kind' with fail case" do
+    assert %{"Three of a kind": 0} = Yahtzee.score_lower([1, 2, 4, 3, 4])
+  end
+
 end
