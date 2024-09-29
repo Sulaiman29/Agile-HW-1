@@ -1,18 +1,10 @@
 defmodule Yahtzee do
-  @moduledoc """
-  Documentation for `Yahtzee`.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Yahtzee.hello()
-      :world
-
-  """
   def hello do
     :world
   end
+
+  def score_lower([]), do: 0
+  def score_lower([head | tail]), do: head + score_lower(tail)
+
+
 end
