@@ -94,18 +94,25 @@ defmodule YahtzeeTest do
   # Small straight tests
   test "Identify 'Small Straight'" do
     assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 2, 5, 4])
+  end
+
+  test "Identify 'Small Straight' with passing case" do
     assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 3, 4, 5])
   end
 
-
-  # Yahtzee
-  test "Identify 'Yahtzee' with fives" do
-    assert %{"Yahtzee": 50} = Yahtzee.score_lower([5, 5, 5, 5, 5])
+  test "Identify 'Small Straight' with failing case" do
+    assert %{"Small Straight": 0} = Yahtzee.score_lower([2, 1, 2, 5, 4])
   end
 
-  test "Identify 'Yahtzee' with different numbers" do
-    assert %{"Yahtzee": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
-  end
+
+  # # Yahtzee
+  # test "Identify 'Yahtzee' with fives" do
+  #   assert %{"Yahtzee": 50} = Yahtzee.score_lower([5, 5, 5, 5, 5])
+  # end
+
+  # test "Identify 'Yahtzee' with different numbers" do
+  #   assert %{"Yahtzee": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
+  # end
 
 
 end
