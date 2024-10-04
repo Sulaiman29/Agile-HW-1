@@ -12,10 +12,6 @@ defmodule Yahtzee do
     end
   end
 
-  defp chance?(dice) do
-    length(dice) == 5 && Enum.uniq(dice) |> length == 1
-  end
-
   defp has_small_straight?(dice) do
     unique_dice = dice |> Enum.uniq() |> Enum.sort()
 
