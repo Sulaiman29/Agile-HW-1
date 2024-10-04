@@ -20,6 +20,39 @@ defmodule Yahtzee do
     end
   end
 
+
+  def total_score(dice_configs) do
+    # Start with an empty set of used categories and a total score of 0
+    used_categories = %{}
+    Enum.reduce(dice_configs, 0, fn dice, total ->
+      {round_score, new_used_categories} = calculate_round_score(dice, used_categories)
+      total + round_score
+    end)
+  end
+
+  defp calculate_round_score(dice, used_categories) do
+    category_scores = score_lower(dice)
+
+    # Filter out already used categories
+    available_scores = Enum.reject(category_scores, fn {category, _score} -> Map.has_key?(used_categories, category) end)
+
+    # Determine the maximum score from available categories
+    {max_category, max_score} =
+      Enum.max_by(available_scores, fn {_category, score} -> score end, fn -> {nil, 0} end)
+
+    # Update the used categories if there is a valid max score
+    new_used_categories =
+      if max_category != nil do
+        Map.put(used_categories, max_category, true)
+      else
+        used_categories
+      end
+
+    {max_score, new_used_categories}
+  end
+
+
+
   defp has_small_straight?(dice) do
     unique_dice = dice |> Enum.uniq() |> Enum.sort()
 
