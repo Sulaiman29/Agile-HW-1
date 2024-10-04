@@ -91,6 +91,13 @@ defmodule YahtzeeTest do
   #   assert %{"Large Straight": 40} = Yahtzee.score_lower([3, 1, 5, 2, 4])
   # end
 
+  # Small straight tests
+  test "Identify 'Small Straight'" do
+    assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 2, 5, 4])
+    assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 3, 4, 5])
+  end
+
+
   # Yahtzee
   test "Identify 'Yahtzee' with fives" do
     assert %{"Yahtzee": 50} = Yahtzee.score_lower([5, 5, 5, 5, 5])
@@ -99,5 +106,6 @@ defmodule YahtzeeTest do
   test "Identify 'Yahtzee' with different numbers" do
     assert %{"Yahtzee": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
   end
+
 
 end
