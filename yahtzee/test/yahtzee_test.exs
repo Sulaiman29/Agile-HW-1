@@ -123,11 +123,11 @@ defmodule YahtzeeTest do
   end
 
   test "Identify 'Chance' with two pairs" do
-    assert %{"Chance": 10} = Yahtzee.score_lower([5, 5, 1, 1, 4])
+    assert %{"Chance": 16} = Yahtzee.score_lower([5, 5, 1, 1, 4])
   end
 
   test "Identify 'Chance' with two dice" do
-    assert %{"Chance": 13} = Yahtzee.score_lower([7,8])
+    assert %{"Chance": 15} = Yahtzee.score_lower([7,8])
   end
 
 end

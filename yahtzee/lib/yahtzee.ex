@@ -8,8 +8,12 @@ defmodule Yahtzee do
       # has_full_house?(dice) -> %{"Full house": 25}
       # has_four_of_a_kind?(dice) -> %{"Four of a kind": Enum.sum(dice)}
       # has_three_of_a_kind?(dice) -> %{"Three of a kind": Enum.sum(dice)}
-      true -> %{"Small Straight": 0, "Yahtzee": 0, "Large Straight": 0, "Full house": 0, "Four of a kind": 0, "Three of a kind": 0}
+      true -> %{"Chance": Enum.sum(dice), "Small Straight": 0, "Yahtzee": 0, "Large Straight": 0, "Full house": 0, "Four of a kind": 0, "Three of a kind": 0}
     end
+  end
+
+  defp yahtzee?(dice) do
+    length(dice) == 5 && Enum.uniq(dice) |> length == 1
   end
 
   defp has_small_straight?(dice) do
