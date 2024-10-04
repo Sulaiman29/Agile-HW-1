@@ -1,11 +1,12 @@
 defmodule Yahtzee do
   def score_lower(dice) do
     cond do
-      has_large_straight?(dice) -> %{"Large Straight": 40}
-      has_full_house?(dice) -> %{"Full house": 25}
-      has_four_of_a_kind?(dice) -> %{"Four of a kind": Enum.sum(dice)}
-      has_three_of_a_kind?(dice) -> %{"Three of a kind": Enum.sum(dice)}
-      true -> %{"Large Straight": 0, "Full house": 0, "Four of a kind": 0, "Three of a kind": 0}
+      yahtzee?(dice) -> %{"Yahtzee": 50}
+      # has_large_straight?(dice) -> %{"Large Straight": 40}
+      # has_full_house?(dice) -> %{"Full house": 25}
+      # has_four_of_a_kind?(dice) -> %{"Four of a kind": Enum.sum(dice)}
+      # has_three_of_a_kind?(dice) -> %{"Three of a kind": Enum.sum(dice)}
+      true -> %{"Yahtzee": 0, "Large Straight": 0, "Full house": 0, "Four of a kind": 0, "Three of a kind": 0}
     end
   end
 

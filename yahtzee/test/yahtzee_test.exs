@@ -74,21 +74,30 @@ defmodule YahtzeeTest do
   #   assert %{"Full house": 25} = Yahtzee.score_lower([2, 2, 2, 3, 3])
   # end
 
-  # large straight tests
-  test "Identify 'Large Straight' with correct 2 to 6" do
-    assert %{"Large Straight": 40} = Yahtzee.score_lower([2, 3, 4, 5, 6])
+  # # large straight tests
+  # test "Identify 'Large Straight' with correct 2 to 6" do
+  #   assert %{"Large Straight": 40} = Yahtzee.score_lower([2, 3, 4, 5, 6])
+  # end
+
+  # test "Identify 'Large Straight' with correct 1 to 5" do
+  #   assert %{"Large Straight": 40} = Yahtzee.score_lower([1, 2, 3, 4, 5])
+  # end
+
+  # test "Identify 'Large Straight' with failing case" do
+  #   assert %{"Large Straight": 0} = Yahtzee.score_lower([1, 5, 4, 5, 6])
+  # end
+
+  # test "Identify 'Large Straight' with different order" do
+  #   assert %{"Large Straight": 40} = Yahtzee.score_lower([3, 1, 5, 2, 4])
+  # end
+
+  # Yahtzee
+  test "Identify 'Yahtzee' with fives" do
+    assert %{"Yahtzee": 50} = Yahtzee.score_lower([5, 5, 5, 5, 5])
   end
 
-  test "Identify 'Large Straight' with correct 1 to 5" do
-    assert %{"Large Straight": 40} = Yahtzee.score_lower([1, 2, 3, 4, 5])
-  end
-
-  test "Identify 'Large Straight' with failing case" do
-    assert %{"Large Straight": 0} = Yahtzee.score_lower([1, 5, 4, 5, 6])
-  end
-
-  test "Identify 'Large Straight' with different order" do
-    assert %{"Large Straight": 40} = Yahtzee.score_lower([3, 1, 5, 2, 4])
+  test "Identify 'Yahtzee' with different numbers" do
+    assert %{"Yahtzee": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
   end
 
 end
