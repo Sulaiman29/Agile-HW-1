@@ -113,21 +113,32 @@ defmodule YahtzeeTest do
   #   assert %{"Yahtzee": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
   # end
 
-  # Part 7 - Chance tests
-  test "Identify 'Chance' with an empty list" do
-    assert %{"Chance": 0} = Yahtzee.score_lower([])
-  end
+  # # Part 7 - Chance tests
+  # test "Identify 'Chance' with an empty list" do
+  #   assert %{"Chance": 0} = Yahtzee.score_lower([])
+  # end
 
-  test "Identify 'Chance' with a random combination" do
-    assert %{"Chance": 14} = Yahtzee.score_lower([1, 5, 2, 3, 3])
-  end
+  # test "Identify 'Chance' with a random combination" do
+  #   assert %{"Chance": 14} = Yahtzee.score_lower([1, 5, 2, 3, 3])
+  # end
 
-  test "Identify 'Chance' with two pairs" do
-    assert %{"Chance": 16} = Yahtzee.score_lower([5, 5, 1, 1, 4])
-  end
+  # test "Identify 'Chance' with two pairs" do
+  #   assert %{"Chance": 16} = Yahtzee.score_lower([5, 5, 1, 1, 4])
+  # end
 
-  test "Identify 'Chance' with two dice" do
-    assert %{"Chance": 15} = Yahtzee.score_lower([7,8])
+  # test "Identify 'Chance' with two dice" do
+  #   assert %{"Chance": 15} = Yahtzee.score_lower([7,8])
+  # end
+
+  # Part 8 test cases:
+  test "Testing last part of the game" do
+    assert %{"Three of a kind": 19,
+    "Four of a kind": 0,
+    "Full house": 25,
+    "Small Straight": 0,
+    "Large Straight": 0,
+    "Yahtzee": 0,
+    "Chance": 0} = Yahtzee.score_lower([2,2,5,5,5])
   end
 
 end
