@@ -12,7 +12,7 @@ defmodule Yahtzee do
     end
   end
 
-  defp yahtzee?(dice) do
+  defp chance?(dice) do
     length(dice) == 5 && Enum.uniq(dice) |> length == 1
   end
 
