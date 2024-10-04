@@ -2,6 +2,7 @@ defmodule YahtzeeTest do
   use ExUnit.Case
   doctest Yahtzee
 
+  # Three of a kind tests
   test "Identify 'Three of a kind' with ones" do
     assert %{"Three of a kind": 17} = Yahtzee.score_lower([2, 3, 4, 4, 4])
   end
@@ -52,8 +53,7 @@ defmodule YahtzeeTest do
     assert %{"Four of a kind": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
   end
 
-  # Full House Test Cases
-
+  # Full house tests
   test "Identify 'Full house' with every face" do
     assert %{"Full house": 25} = Yahtzee.score_lower([7, 7, 6, 6, 6])
   end
@@ -70,4 +70,7 @@ defmodule YahtzeeTest do
     assert %{"Full house": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
   end
 
+  test "Identify 'Full house' with no face" do
+    assert %{"Full house": 25} = Yahtzee.score_lower([2, 2, 2, 3, 3])
+  end
 end

@@ -1,34 +1,32 @@
 defmodule Yahtzee do
-
   def score_lower(dice) do
     cond do
-      check_four(dice) ->
-        %{:"Four of a kind" => Enum.sum(dice)}
-
-      check_three(dice) ->
-        %{:"Three of a kind" => Enum.sum(dice)}
-
-      check_full_house(dice) ->
-        %{:"Full house" => 25}
-
-      true ->
-        %{:"Three of a kind" => 0, :"Four of a kind" => 0, :"Full house" => 0}
+      has_full_house?(dice) -> %{"Full house": 25}
+      has_four_of_a_kind?(dice) -> %{"Four of a kind": Enum.sum(dice)}
+      has_three_of_a_kind?(dice) -> %{"Three of a kind": Enum.sum(dice)}
+      true -> %{"Full house": 0, "Four of a kind": 0, "Three of a kind": 0}
     end
   end
 
-  defp check_three(dice) do
-    Enum.any?(dice, fn x -> Enum.count(dice, fn y -> y == x end) >= 3 end)
+  defp has_full_house?(dice) do
+    dice
+    |> Enum.frequencies()
+    |> Enum.sort_by(fn {_number, count} -> -count end)
+    |> case do
+      [{_, 3}, {_, 2}] -> true
+      _ -> false
+    end
   end
 
-  defp check_four(dice) do
-    frequencies = Enum.frequencies(dice)
-    Enum.any?(frequencies, fn {_key, count} -> count >= 4 end)
+  defp has_four_of_a_kind?(dice) do
+    dice
+    |> Enum.frequencies()
+    |> Enum.any?(fn {_number, count} -> count >= 4 end)
   end
 
-  defp check_full_house(dice) do
-    frequencies = Enum.frequencies(dice)
-    values = Map.values(frequencies)
-    Enum.sort(values) == [2, 3]
+  defp has_three_of_a_kind?(dice) do
+    dice
+    |> Enum.frequencies()
+    |> Enum.any?(fn {_number, count} -> count >= 3 end)
   end
-
 end
