@@ -52,4 +52,22 @@ defmodule YahtzeeTest do
     assert %{"Four of a kind": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
   end
 
+  # Full House Test Cases
+
+  test "Identify 'Full house' with every face" do
+    assert %{"Full house": 25} = Yahtzee.score_lower([7, 7, 6, 6, 6])
+  end
+
+  test "Identify 'Full house' with every face" do
+    assert %{"Full house": 0} = Yahtzee.score_lower([6, 1, 3, 3, 3])
+  end
+
+  test "Identify 'Full house' with every face" do
+    assert %{"Full house": 0} = Yahtzee.score_lower([7, 7, 1, 6, 6])
+  end
+
+  test "Identify 'Full house' with every face" do
+    assert %{"Full house": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
+  end
+
 end
