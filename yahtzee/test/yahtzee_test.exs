@@ -141,4 +141,8 @@ defmodule YahtzeeTest do
     "Chance": 0} = Yahtzee.score_lower([2,2,5,5,5])
   end
 
+  test "Testing Total score function" do
+    assert 42 = Yahtzee.total_score([[2, 3, 4, 4, 4], [6, 6, 6, 5, 5]])
+  end
+
 end
