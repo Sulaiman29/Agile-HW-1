@@ -10,6 +10,10 @@ defmodule Yahtzee do
     end
   end
 
+  defp yahtzee?(dice) do
+    Enum.uniq(dice) |> length == 1
+  end
+
   defp has_large_straight?(dice) do
     sorted_dice = Enum.sort(dice)
 
