@@ -91,22 +91,21 @@ defmodule YahtzeeTest do
   #   assert %{"Large Straight": 40} = Yahtzee.score_lower([3, 1, 5, 2, 4])
   # end
 
-  # Small straight tests
-  test "Identify 'Small Straight'" do
-    assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 2, 5, 4])
-  end
+  # # Small straight tests
+  # test "Identify 'Small Straight'" do
+  #   assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 2, 5, 4])
+  # end
 
-  test "Identify 'Small Straight' with passing case" do
-    assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 3, 4, 5])
-  end
+  # test "Identify 'Small Straight' with passing case" do
+  #   assert %{"Small Straight": 30} = Yahtzee.score_lower([2, 3, 3, 4, 5])
+  # end
 
-  test "Identify 'Small Straight' with failing case" do
-    assert %{"Small Straight": 0} = Yahtzee.score_lower([2, 1, 2, 5, 4])
-  end
+  # test "Identify 'Small Straight' with failing case" do
+  #   assert %{"Small Straight": 0} = Yahtzee.score_lower([2, 1, 2, 5, 4])
+  # end
 
-
-  # # Yahtzee
-  # test "Identify 'Yahtzee' with fives" do
+  # # Yahtzee Test Cases
+  # test "Identify 'Yahtzee' with different numbers" do
   #   assert %{"Yahtzee": 50} = Yahtzee.score_lower([5, 5, 5, 5, 5])
   # end
 
@@ -114,5 +113,21 @@ defmodule YahtzeeTest do
   #   assert %{"Yahtzee": 0} = Yahtzee.score_lower([1, 2, 3, 4, 5])
   # end
 
+  # Part 7 - Chance tests
+  test "Identify 'Chance' with an empty list" do
+    assert %{"Chance": 0} = Yahtzee.score_lower([])
+  end
+
+  test "Identify 'Chance' with a random combination" do
+    assert %{"Chance": 14} = Yahtzee.score_lower([1, 5, 2, 3, 3])
+  end
+
+  test "Identify 'Chance' with two pairs" do
+    assert %{"Chance": 10} = Yahtzee.score_lower([5, 5, 1, 1, 4])
+  end
+
+  test "Identify 'Chance' with two dice" do
+    assert %{"Chance": 13} = Yahtzee.score_lower([7,8])
+  end
 
 end

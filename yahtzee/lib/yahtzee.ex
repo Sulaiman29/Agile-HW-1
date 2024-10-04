@@ -1,7 +1,8 @@
 defmodule Yahtzee do
+
   def score_lower(dice) do
     cond do
-      has_small_straight?(dice) -> %{"Small Straight": 30}
+      # has_small_straight?(dice) -> %{"Small Straight": 30}
       # yahtzee?(dice) -> %{"Yahtzee": 50}
       # has_large_straight?(dice) -> %{"Large Straight": 40}
       # has_full_house?(dice) -> %{"Full house": 25}
